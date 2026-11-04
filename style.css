@@ -492,6 +492,7 @@ nav a:hover {
 .about-content {
     max-width: 850px;
     margin: 0 auto;
+    text-align: center;
 }
 
 .about-content h2,
@@ -521,6 +522,7 @@ nav a:hover {
     gap: 12px;
     list-style: none;
     padding: 0;
+    justify-content: center;
 }
 
 .skills-list li {
@@ -736,3 +738,4 @@ nav a:hover {
     }
 
 }
+
