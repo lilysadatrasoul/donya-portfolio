@@ -1,0 +1,28 @@
+
+
+[
+    {
+        "id": 1,
+        "title": "Dreams in Color",
+        "category": "painting",
+        "technique": "Acrylic on Canvas",
+        "year": "2024",
+        "image": "49681bca-4436-4e58-b231-ce65983d520c.jfif"
+    },
+    {
+        "id": 2,
+        "title": "Textile Patterns",
+        "category": "textile",
+        "technique": "Textile Design",
+        "year": "2023",
+        "image": "5b99c26d-d726-4543-98b1-33c5195c190a.jfif"
+    },
+    {
+        "id": 3,
+        "title": "Ceramic Forms",
+        "category": "ceramics",
+        "technique": "Ceramic Art",
+        "year": "2024",
+        "image": "daa91afc-5325-4b78-89b4-8e6f05b2fcf1.jfif"
+    }
+]

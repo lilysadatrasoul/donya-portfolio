@@ -1,0 +1,738 @@
+
+/* ========================================
+   DONYA GHAHREMANI - ART PORTFOLIO
+   ======================================== */
+
+
+/* ========== 1. COLORS & GLOBAL ========== */
+
+:root {
+    --ivory: #F7F2E9;
+    --beige: #E4D6C5;
+    --burgundy: #803F4A;
+    --burgundy-dark: #602E38;
+    --charcoal: #292522;
+    --muted-text: #665C55;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background-color: var(--ivory);
+    color: var(--charcoal);
+}
+
+img {
+    max-width: 100%;
+}
+
+
+/* ========== 2. HEADER & NAVIGATION ========== */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+}
+
+header h1 {
+    color: var(--burgundy);
+    font-size: 24px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--charcoal);
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--burgundy);
+}
+
+
+/* ========== 3. HERO ========== */
+
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    padding: 80px 60px;
+    min-height: 70vh;
+}
+
+.hero-content,
+.hero-image {
+    flex: 1;
+    min-width: 0;
+}
+
+.hero-content h2 {
+    font-size: 52px;
+    color: var(--charcoal);
+    margin-bottom: 15px;
+}
+
+.hero-content p {
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--muted-text);
+    margin-bottom: 20px;
+}
+
+.hero-content p:first-of-type {
+    color: var(--burgundy);
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.hero-content a {
+    display: inline-block;
+    background-color: var(--burgundy);
+    color: white;
+    padding: 14px 28px;
+    text-decoration: none;
+    border-radius: 6px;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.hero-content a:hover {
+    background-color: var(--burgundy-dark);
+}
+
+.hero-image img {
+    width: 100%;
+    max-height: 700px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+
+/* ========== 4. PORTFOLIO ========== */
+
+.portfolio {
+    padding: 80px 60px;
+    text-align: center;
+}
+
+.portfolio h2 {
+    font-size: 36px;
+    color: var(--charcoal);
+}
+
+.portfolio-filters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.portfolio-filters button {
+    padding: 10px 22px;
+    border: 1px solid var(--burgundy);
+    background: transparent;
+    color: var(--burgundy);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease,
+                color 0.3s ease;
+}
+
+.portfolio-filters button:hover,
+.portfolio-filters button.active {
+    background-color: var(--burgundy);
+    color: white;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 40px;
+}
+
+
+
+/* ========== 5. ARTWORK CARDS ========== */
+
+.art-card {
+    text-align: left;
+    overflow: hidden;
+    border-radius: 12px;
+    transition: transform 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+.art-card img {
+    display: block;
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.4s ease;
+}
+
+.art-card h3 {
+    color: var(--charcoal);
+    margin-bottom: 5px;
+}
+
+.art-card p {
+    color: var(--burgundy);
+}
+
+.art-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+.art-card:hover img {
+    transform: scale(1.05);
+}
+
+/* ========== ARTWORK HOVER OVERLAY ========== */
+
+.art-image-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.art-image-wrapper img {
+    display:block ;
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+}
+
+.art-overlay {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(41, 37, 34, 0.75);
+    opacity: 0;
+
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.art-overlay h3 {
+    color: white;
+    font-size: 22px;
+    margin-bottom: 8px;
+}
+
+.art-overlay p {
+    color: var(--beige);
+    font-size: 14px;
+    text-transform: capitalize;
+}
+
+.art-card:hover .art-overlay {
+    opacity: 1;
+}
+
+/* ========== 6. ARTWORK MODAL ========== */
+
+.art-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-modal {
+    position: absolute;
+    top: 25px;
+    right: 35px;
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+.close-modal:focus-visible {
+    outline: 3px solid var(--burgundy);
+    outline-offset: 4px;
+}
+
+.modal-content {
+    max-width: 900px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    text-align: center;
+}
+
+
+.modal-content img {
+    max-width: 100%;
+    max-height: 65vh;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.modal-info {
+    color: var(--ivory);
+    margin-top: 20px;
+}
+
+.modal-info h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.modal-info p {
+    font-size: 15px;
+    color: var(--beige);
+    margin: 6px 0;
+}
+#modalDescription {
+    white-space: pre-line;
+    line-height: 1.9;
+    margin-top: 16px;
+}
+
+#modalSourceLink:not([hidden]) {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 10px 18px;
+    background-color: #803F4A;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+}
+
+#modalSourceLink:not([hidden]):hover {
+    opacity: 0.85;
+}
+
+
+/* ========== 7. DORA CHAP ========== */
+
+.dora-section {
+    background-color: var(--beige);
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.dora-content {
+    max-width: 650px;
+    margin: 0 auto;
+}
+.dora-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+
+    max-width: 1200px;
+    margin: 40px auto;
+}
+.dora-card {
+    background-color: var(--ivory);
+    border-radius: 12px;
+    padding: 12px;
+
+    overflow: hidden;
+    min-width: 0;
+
+    transition: transform 0.3s ease,
+                box-shadow 0.3s ease;
+
+    border: none;
+    font: inherit;
+    text-align: inherit;
+    cursor: pointer;
+}
+.dora-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+.dora-card:focus-visible {
+    outline: 3px solid var(--burgundy);
+    outline-offset: 4px;
+}
+.dora-card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    cursor: pointer;
+    border-radius: 8px;
+}
+.dora-card h3 {
+    color: var(--charcoal);
+    font-size: 15px;
+    line-height: 1.6;
+
+    margin: 12px 0 0;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+
+    overflow: hidden;
+    overflow-wrap: anywhere;
+}
+
+.dora-label,
+.section-label {
+    color: var(--burgundy);
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.dora-content h2 {
+    font-size: 48px;
+    margin: 20px 0;
+    color: var(--charcoal);
+}
+
+.dora-content p {
+    font-size: 17px;
+    line-height: 1.8;
+    margin-bottom: 30px;
+    color: var(--charcoal);
+}
+.dora-text-link {
+    display: inline-block;
+    color: var(--burgundy);
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    transition: color 0.3s ease;
+}
+
+.dora-text-link:hover {
+    color: var(--burgundy-dark);
+}
+
+.dora-text-link:focus-visible {
+    outline: 2px solid var(--burgundy);
+    outline-offset: 4px;
+}
+
+.contact-link {
+    display: inline-block;
+    background-color: var(--burgundy);
+    color: white;
+    padding: 14px 30px;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.3s ease,
+                transform 0.3s ease;
+}
+
+.dora-link:hover,
+.contact-link:hover {
+    background-color: var(--burgundy-dark);
+    transform: translateY(-3px);
+}
+.dora-show-all {
+    display: block;
+    margin: 30px auto 0;
+    padding: 14px 28px;
+
+    background-color: var(--burgundy);
+    color: white;
+    border: none;
+    border-radius: 6px;
+
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dora-show-all:hover {
+    background-color: var(--burgundy-dark);
+}
+
+.dora-show-all:focus-visible {
+    outline: 3px solid var(--charcoal);
+    outline-offset: 3px;
+}
+
+
+/* ========== 8. ABOUT ========== */
+
+.about-section {
+    background-color: var(--ivory);
+    padding: 100px 20px;
+}
+
+.about-content {
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.about-content h2,
+.contact-content h2 {
+    font-size: 42px;
+    color: var(--charcoal);
+    margin: 20px 0 30px;
+}
+
+.about-content p,
+.contact-content p {
+    font-size: 17px;
+    line-height: 1.9;
+    color: var(--charcoal);
+    margin-bottom: 20px;
+}
+
+.about-content h3 {
+    margin-top: 35px;
+    margin-bottom: 15px;
+    color: var(--burgundy);
+}
+
+.skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    list-style: none;
+    padding: 0;
+}
+
+.skills-list li {
+    background-color: var(--beige);
+    color: var(--charcoal);
+    padding: 10px 18px;
+    border-radius: 20px;
+}
+
+
+/* ========== 9. CONTACT ========== */
+
+.contact-section {
+    background-color: var(--beige);
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.contact-content {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.contact-links {
+    margin-top: 30px;
+}
+
+/*==========back to top============*/
+.back-to-top {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+
+    width: 48px;
+    height: 48px;
+
+    border: none;
+    border-radius: 50%;
+
+    background-color: var(--burgundy);
+    color: white;
+
+    font-size: 24px;
+    cursor: pointer;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: opacity 0.3s ease,
+                visibility 0.3s ease,
+                transform 0.3s ease;
+
+    z-index: 100;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    transform: translateY(-4px);
+}
+
+.back-to-top:focus-visible {
+    outline: 3px solid var(--charcoal);
+    outline-offset: 3px;
+}
+/* ========== 10. FOOTER ========== */
+
+.site-footer {
+    background-color: var(--charcoal);
+    color: var(--ivory);
+    text-align: center;
+    padding: 35px 20px;
+}
+
+.site-footer p {
+    margin: 8px 0;
+    font-size: 14px;
+}
+
+
+/* ========== 11. TABLET & MOBILE ========== */
+
+@media (max-width: 768px) {
+
+    header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .hero {
+        flex-direction: column;
+        padding: 40px 20px;
+        gap: 30px;
+        min-height: auto;
+    }
+
+    .hero-content h2 {
+        font-size: 36px;
+    }
+
+    .hero-content p {
+        font-size: 15px;
+    }
+
+    .hero-image {
+        width: 100%;
+    }
+
+    .hero-image img {
+        max-height: 400px;
+    }
+
+    .portfolio {
+        padding: 50px 20px;
+    }
+
+    .portfolio-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .dora-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    }
+
+}
+
+
+/* ========== 12. SMALL MOBILE ========== */
+
+@media (max-width: 600px) {
+
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-section,
+    .contact-section,
+    .dora-section {
+        padding: 60px 20px;
+    }
+
+    .about-content h2,
+    .contact-content h2,
+    .dora-content h2 {
+        font-size: 32px;
+    }
+
+    .skills-list {
+        justify-content: center;
+    }
+
+    .close-modal {
+        top: 12px;
+        right: 18px;
+    }
+    .modal-content {
+    width: 94%;
+    max-height: 85vh;
+    padding: 12px;
+    }
+
+    .modal-content img {
+    max-width: 100%;
+    max-height: 40vh;
+    object-fit: contain;
+    }
+
+    .modal-info {
+    margin-top: 14px;
+    }
+
+    .modal-info h2 {
+    font-size: 20px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+    }
+
+    #modalDescription {
+    font-size: 14px;
+    line-height: 1.8;
+    text-align: right;
+    direction: rtl;
+    overflow-wrap: anywhere;
+    }
+
+    #modalSourceLink:not([hidden]) {
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    }
+    .dora-grid {
+    gap: 12px;
+    margin: 30px auto;
+    }
+
+    .dora-card {
+    padding: 8px;
+    }
+
+    .dora-card h3 {
+    font-size: 13px;
+    line-height: 1.5;
+    }
+
+}
